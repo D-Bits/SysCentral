@@ -88,6 +88,10 @@ namespace SysCentral
                 string secondHash = Console.ReadLine();
                 Console.WriteLine(CompareHashes(firstHash, secondHash));
             }
+            else
+            {
+                Console.WriteLine("Invalid option selected. Program terminated");
+            }
         }
     }
 }
