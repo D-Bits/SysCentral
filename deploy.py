@@ -8,17 +8,34 @@ from subprocess import run
 def dotnet_cmds():
 
     # Restore the project before compiling 
-    run(['dotnet', 'restore'])
+    restore = run(['dotnet', 'restore'])
 
     # Build for all target operating systems
-    run(['dotnet', 'build', '-r', 'win10-x64'], check=True)
-    run(['dotnet', 'build', '-r', 'osx.10.14-x64'], check=True)
-    run(['dotnet', 'build', '-r', 'ubuntu.18.04-x64'], check=True)
+    build_win64 = run(['dotnet', 'build', '-r', 'win10-x64'], check=True)
+    build_mac64 = run(['dotnet', 'build', '-r', 'osx-x64'], check=True)
+    build_linux64 = run(['dotnet', 'build', '-r', 'linux-x64'], check=True)
 
     # Publish all
-    run(['dotnet', 'publish', '-c', 'win10-x64'], check=True)
-    run(['dotnet', 'publish', '-c', 'osx.10.14-x64'], check=True)
-    run(['dotnet', 'publish', '-c', 'ubuntu.18.04-x64'], check=True)
+    pub_win64 = run(['dotnet', 'publish', '-c', 'win10-x64'], check=True)
+    pub_mac64 = run(['dotnet', 'publish', '-c', 'osx-x64'], check=True)
+    pub_linux64 = run(['dotnet', 'publish', '-c', 'linux-x64'], check=True)
 
+    # Error outputs
+    if restore.returncode != 0:
+        print(restore.stderr)
+    elif build_win64.returncode != 0:
+        print(build_win64.stderr)
+    elif build_mac64.returncode != 0:
+        print(build_mac64.stderr)
+    elif build_linux64.returncode != 0:
+        print(build_linux64.stderr)
+    elif pub_win64.returncode != 0:
+        print(pub_win64.stderr)
+    elif pub_mac64.returncode != 0:
+        print(pub_mac64.stderr)
+    elif pub_linux64.returncode != 0:
+        print(pub_linux64.stderr)
+    else:
+        print("All binaries compiled successfully.")
 
 dotnet_cmds()

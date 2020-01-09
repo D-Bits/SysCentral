@@ -1,8 +1,8 @@
 using System;
+using System.Text;
 using System.IO;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace SysCentral
 {
@@ -11,16 +11,24 @@ namespace SysCentral
         // Create multiple directories in a given location
         public static void CreateDirs(string path, int dirNum)
         {
-            Directory.SetCurrentDirectory(path);
-
-            for (int i = 0; i < dirNum; i++)
+            try
             {
-                Console.Write("Enter a name for the directory you want to create: ");
-                string dirName = Console.ReadLine();
-                Directory.CreateDirectory(dirName);
+                Directory.SetCurrentDirectory(path);
+
+                for (int i = 0; i < dirNum; i++)
+                {
+                    Console.Write("Enter a name for the directory you want to create: ");
+                    string dirName = Console.ReadLine();
+                    Directory.CreateDirectory(dirName);
+                }
+
+                Console.WriteLine("Your directories have been created.");
             }
 
-            Console.WriteLine("Your directories have been created.");
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }    
         }
 
         // Calculate a SHA256 file checksum
@@ -31,7 +39,7 @@ namespace SysCentral
                 using (var stream = File.OpenRead(SourceFile))
                 {
                     return BitConverter.ToString(sha256.ComputeHash(stream)).Replace("-",string.Empty);
-                }
+                } 
             }
         }
 
@@ -77,6 +85,7 @@ namespace SysCentral
             {
                 Console.Write("Enter the full path of the file you want to hash: ");
                 string userFile = Console.ReadLine();
+                Console.Write("Your SHA256 Hash is: ");
                 Console.WriteLine(GetFileChecksum(userFile));
             }
             else if (userChoice == 3)
