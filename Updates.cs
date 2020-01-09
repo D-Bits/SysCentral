@@ -4,33 +4,52 @@ using System.Runtime.InteropServices;
 
 namespace SysCentral
 {
+    // Functions to automate updates via package managers
     public static class Updates
     {
-        // Helper method for executing shell commands
-
         // Automate updates on Windows via Chocolatey, and WSL
         public static void WindowsUpdates()
         {
-            Process.Start("CMD.exe", "/K choco upgrade all");
+            try
+            {
+                var ChocoUpdates = Process.Start("CMD.exe", "/K choco upgrade all");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
         }
 
         // Automate updates on MacOS via Homebrew
         public static void HomebrewUpdates()
         {
-            string UpdateHomebrew = "brew update";
-            var UpdateHomebrewExec = Process.Start("bin/bash", UpdateHomebrew);
-            Console.WriteLine(UpdateHomebrewExec);
-
-            string updateCmd = "brew upgrade";
-            var UpdateCmdExec = Process.Start("bin/bash", updateCmd);
-            Console.WriteLine(UpdateCmdExec);
+            try
+            {
+                // Ensure downloadable packages are up-to-date
+                var HomebrewUpdate = Process.Start("bin/bash", "/K brew update");
+                // Update all installed packages
+                var HomebrewUpgrade = Process.Start("bin/bash", "/K brew upgrade");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
         }
 
         // Automate updates on Linux via APT
         public static void AptUpdates()
         {
-            Process proc = new Process();
-            // Update APT
+            try
+            {
+                // Ensure downloadable packages are up-to-date
+                var AptUpdate = Process.Start("bin/bash", "/K sudo apt-get update");
+                // Update all installed packages
+                var AptUpgrade = Process.Start("bin/bash", "/K sudo apt-get upgrade");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
         }
         
         public static void UpdatesMain()
