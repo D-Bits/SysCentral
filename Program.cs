@@ -27,19 +27,22 @@ namespace SysCentral
             if (userChoice == 1)
             {
                 FileSys.FileSysMain();
+                Console.WriteLine();
             }
             else if (userChoice == 2)
             {
                 Updates.UpdatesMain();
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("Invalid option.");
+                Console.WriteLine();
             }
 
             // Prompt the user to press enter to exit program
-            //Console.Write("Press any key to exit program.");
-            // Console.ReadKey();
+            Console.Write("Press any key to exit program.");
+            Console.ReadKey();
         }
     }
 }
