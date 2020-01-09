@@ -10,7 +10,7 @@ executable, and follow the prompts.
 
 ## Executable SHA256 Checksums
 
-Please see *executables* directory for executables.
+Please see *bin* directory for executables.
 
 * Windows10-x64: 00EC136A49AA121CE75646B5A00A28CC7032328C0958BF5FA4A10E1C72EBE615
 * MacOS-x64: 49CD44FF3683C71386E08DDB0A4F342DBA63A07B4F2900A2A19855D19B8CD291
