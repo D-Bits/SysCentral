@@ -25,21 +25,28 @@ namespace SysCentral
                 Console.WriteLine("Your directories have been created.");
             }
 
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }    
         }
 
         // Calculate a SHA256 file checksum
         public static string GetFileChecksum(string SourceFile)
         {
-            using (var sha256 = SHA256.Create())
+            try
             {
-                using (var stream = File.OpenRead(SourceFile))
+                using (var sha256 = SHA256.Create())
                 {
-                    return BitConverter.ToString(sha256.ComputeHash(stream)).Replace("-",string.Empty);
-                } 
+                    using (var stream = File.OpenRead(SourceFile))
+                    {
+                        return BitConverter.ToString(sha256.ComputeHash(stream)).Replace("-", string.Empty);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
 
@@ -56,15 +63,15 @@ namespace SysCentral
             }
         }
 
-        public static void FileSysMain()
+        public static void FileSysOptions()
         {
-            Dictionary<int, string> FileSysOptions = new Dictionary<int, string>();
+            Dictionary<int, string> FileSysChoices = new Dictionary<int, string>();
 
-            FileSysOptions.Add(1, "Create directories");
-            FileSysOptions.Add(2, "Calculate a SHA256 file checksum.");
-            FileSysOptions.Add(3, "Compare two file checksums.");
+            FileSysChoices.Add(1, "Create directories");
+            FileSysChoices.Add(2, "Calculate a SHA256 file checksum.");
+            FileSysChoices.Add(3, "Compare two file checksums.");
 
-            foreach (KeyValuePair<int, string> value in FileSysOptions)
+            foreach (KeyValuePair<int, string> value in FileSysChoices)
             {
                 Console.WriteLine(value);
             }

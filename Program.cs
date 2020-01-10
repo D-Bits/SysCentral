@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SysCentral
 {
-    class Program
+    public class Program
     {
         static void UserOptions()
         {
@@ -11,6 +11,7 @@ namespace SysCentral
 
             FileSysOptions.Add(1, "File/Directory Tasks.");
             FileSysOptions.Add(2, "Automate Updates.");
+            FileSysOptions.Add(3, "Get Various System Information.");
 
             foreach (var item in FileSysOptions)
             {
@@ -26,17 +27,22 @@ namespace SysCentral
 
             if (userChoice == 1)
             {
-                FileSys.FileSysMain();
+                FileSys.FileSysOptions();
                 Console.WriteLine();
             }
             else if (userChoice == 2)
             {
-                Updates.UpdatesMain();
+                Updates.UpdatesOptions();
+                Console.WriteLine();
+            }
+            else if (userChoice == 3)
+            {
+                SysInfo.SysInfoOptions();
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("Invalid option.");
+                Console.WriteLine("Invalid option. Press any key to exit.");
                 Console.WriteLine();
             }
 

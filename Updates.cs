@@ -52,7 +52,7 @@ namespace SysCentral
             }
         }
         
-        public static void UpdatesMain()
+        public static void UpdatesOptions()
         {
             // Prompt the user to choose what platform they use.
             Console.Write("Enter 1 for Windows updates, 2 for Linux (APT) updates, and 3 Homebrew Updates: ");
