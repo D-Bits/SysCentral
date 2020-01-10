@@ -46,7 +46,7 @@ namespace SysCentral
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return "Error: " + ex.Message;
             }
         }
 
@@ -107,6 +107,7 @@ namespace SysCentral
             else
             {
                 Console.WriteLine("Invalid option selected. Program terminated");
+                FileSysOptions();
             }
         }
     }
