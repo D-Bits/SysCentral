@@ -21,7 +21,7 @@ namespace SysCentral
                 Console.WriteLine();
                 Console.WriteLine("OS Version: " + RuntimeInformation.OSDescription);
                 Console.WriteLine("Host Name: " + Environment.MachineName.ToString());
-                Console.WriteLine("64-bit OS?: " + Environment.Is64BitOperatingSystem.ToString());
+                Console.WriteLine("64-bit OS?: " + Environment.Is64BitOperatingSystem);
             }
             catch (Exception ex)
             {
