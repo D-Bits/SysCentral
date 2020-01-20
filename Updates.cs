@@ -1,6 +1,11 @@
 using System;
 using System.Diagnostics;
-
+/*
+*<summary>
+  Functions to automate updates via various 
+  package managers.
+*</summary>
+*/
 namespace SysCentral
 {
     // Functions to automate updates via package managers
@@ -20,15 +25,15 @@ namespace SysCentral
             }
         }
 
-        // NOT YET WORKING: Automate updates on MacOS via Homebrew
+        // Automate updates on MacOS via Homebrew
         public static void HomebrewUpdates()
         {
             try
             {
                 // Ensure downloadable packages are up-to-date
-                var HomebrewUpdate = Process.Start("/bin/bash", "/K brew update");
+                var HomebrewUpdate = Process.Start("/bin/bash", "-c brew update");
                 // Update all installed packages
-                var HomebrewUpgrade = Process.Start("/bin/bash", "/K brew upgrade");
+                var HomebrewUpgrade = Process.Start("/bin/bash", "-c brew upgrade");
             }
             catch (Exception ex)
             {
@@ -36,15 +41,15 @@ namespace SysCentral
             }
         }
 
-        // NOT YET WORKING: Automate updates on Linux via APT
+        // Automate updates on Linux via APT
         public static void AptUpdates()
         {
             try
             {
                 // Ensure downloadable packages are up-to-date
-                var AptUpdate = Process.Start("/bin/bash", "/K sudo apt-get update");
+                var AptUpdate = Process.Start("/bin/bash", "-c sudo apt-get update");
                 // Update all installed packages
-                var AptUpgrade = Process.Start("/bin/bash", "/K sudo apt-get upgrade");
+                var AptUpgrade = Process.Start("/bin/bash", "-c sudo apt-get upgrade");
             }
             catch (Exception ex)
             {
