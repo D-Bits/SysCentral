@@ -57,7 +57,11 @@ namespace SysCentral
             }       
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine();
+                Console.WriteLine("ERROR: " + ex.Message);
+                Console.WriteLine();
+                Console.Write("We apologize for the error. Press any key to exit.");
+                Console.ReadKey();
             }   
         }
     }
