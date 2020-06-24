@@ -17,7 +17,7 @@ namespace SysCentral
             try
             {
                 // Update all packages install via Chocolatey
-                var ChocoUpdates = Process.Start("CMD.exe", "/K choco upgrade all");
+                Process ChocoUpdates = Process.Start("CMD.exe", "/K choco upgrade all");
             }
             catch (Exception ex)
             {
@@ -31,9 +31,9 @@ namespace SysCentral
             try
             {
                 // Ensure downloadable packages are up-to-date
-                var HomebrewUpdate = Process.Start("/bin/bash", "-c brew update");
+                Process HomebrewUpdate = Process.Start("/bin/bash", "-c brew update");
                 // Update all installed packages
-                var HomebrewUpgrade = Process.Start("/bin/bash", "-c brew upgrade");
+                Process HomebrewUpgrade = Process.Start("/bin/bash", "-c brew upgrade");
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace SysCentral
         public static void UpdatesOptions()
         {
             // Prompt the user to choose what platform they use.
-            Console.Write("Enter 1 for Windows updates, 2 for Linux (APT) updates, and 3 Homebrew Updates: ");
+            Console.Write("Enter 1 for Windows updates, 2 for Linux (APT) updates, 3 Homebrew Updates, and 0 to return to main: ");
             int userChoice = Convert.ToInt32(Console.ReadLine());
 
             if (userChoice == 1)
@@ -74,6 +74,10 @@ namespace SysCentral
             else if (userChoice == 3)
             {
                 HomebrewUpdates();
+            }
+            else 
+            {
+                Program.Main(null);
             }
         }
     }

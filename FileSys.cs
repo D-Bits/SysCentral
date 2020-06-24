@@ -66,6 +66,7 @@ namespace SysCentral
         {
             Dictionary<int, string> FileSysChoices = new Dictionary<int, string>();
 
+            FileSysChoices.Add(0, "Return to main menu.");
             FileSysChoices.Add(1, "Create directories");
             FileSysChoices.Add(2, "Calculate a SHA256 file checksum.");
             FileSysChoices.Add(3, "Compare two file checksums.");
@@ -78,6 +79,10 @@ namespace SysCentral
             Console.Write("Select an option, based on the above options: ");
             int userChoice = Convert.ToInt32(Console.ReadLine());
 
+            if (userChoice == 0)
+            {
+                Program.Main(null);
+            }
             if (userChoice == 1)
             {
                 Console.Write("Enter the full path of where you want to create your directories: ");
@@ -93,6 +98,8 @@ namespace SysCentral
                 string userFile = Console.ReadLine();
                 Console.Write("Your SHA256 Hash is: ");
                 Console.WriteLine(GetFileChecksum(userFile));
+                Console.WriteLine();
+                FileSysOptions();
             }
             else if (userChoice == 3)
             {
@@ -101,11 +108,23 @@ namespace SysCentral
 
                 Console.Write("Enter the second hash: ");
                 string secondHash = Console.ReadLine();
-                Console.WriteLine(CompareHashes(firstHash, secondHash));
+                var compare = CompareHashes(firstHash, secondHash);
+                Console.WriteLine();
+                if (compare)
+                {
+                    Console.WriteLine("The hashes match.");
+                }
+                else 
+                {
+                    Console.WriteLine("The hashes do NOT match.");
+                }
+                Console.WriteLine();
+                FileSysOptions();
             }
             else
             {
                 Console.WriteLine("Invalid option selected. Program terminated");
+                Console.WriteLine();
                 FileSysOptions();
             }
         }

@@ -37,8 +37,8 @@ namespace SysCentral
                 Console.WriteLine("***Hardware Information***");
                 Console.WriteLine();
                 // Get hardware architecture 
-                Console.WriteLine("Architecture: ", Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE"));
-                Console.WriteLine("CPU Identifier: ", Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER"));
+                Console.WriteLine("Architecture: " + Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE"));
+                Console.WriteLine("CPU Identifier: " + Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER"));
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace SysCentral
                 Console.WriteLine();
                 Console.WriteLine("***Network Information***");
                 Console.WriteLine();
-                Console.WriteLine("Host Name: " + Dns.GetHostName());
+                Console.WriteLine("Host Name: " + Dns.GetHostName().ToString());
                 Console.WriteLine("IP Address: " +  Dns.GetHostEntry(hostName).AddressList);
             }
             catch (Exception ex)
@@ -69,9 +69,12 @@ namespace SysCentral
         {
             Dictionary<int, string> SysInfoChoices = new Dictionary<int, string>();
 
+            SysInfoChoices.Add(0, "Return to Main Menu.");
             SysInfoChoices.Add(1, "Get Operating System Info.");
             SysInfoChoices.Add(2, "Get Hardware Info.");
             SysInfoChoices.Add(3, "Get Network Info");
+
+            Console.WriteLine();
 
             foreach (KeyValuePair<int, string> value in SysInfoChoices)
             {
@@ -81,17 +84,26 @@ namespace SysCentral
             Console.Write("Select an option, based on the above options: ");
             int UserChoice = Convert.ToInt32(Console.ReadLine());
         
-            if (UserChoice == 1)
+            Console.WriteLine();
+
+            if (UserChoice == 0)
+            {
+                Program.Main(null);
+            }
+            else if (UserChoice == 1)
             {
                 OsInfo();
+                SysInfoOptions();
             }
             else if (UserChoice == 2)
             {
                 HardwareInfo();
+                SysInfoOptions();
             }
             else if (UserChoice == 3)
             {
                 NetworkInfo();
+                SysInfoOptions();
             }
             else
             {

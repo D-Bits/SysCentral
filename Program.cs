@@ -9,6 +9,7 @@ namespace SysCentral
         {
             Dictionary<int, string> FileSysOptions = new Dictionary<int, string>();
 
+            FileSysOptions.Add(0, "Exit program.");
             FileSysOptions.Add(1, "File/Directory Tasks.");
             FileSysOptions.Add(2, "Automate Updates.");
             FileSysOptions.Add(3, "Get Various System Information.");
@@ -19,13 +20,17 @@ namespace SysCentral
             }
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {        
             UserOptions();    
             Console.Write("Enter an int, based on the above options: ");
             int userChoice = Convert.ToInt32(Console.ReadLine());
 
-            if (userChoice == 1)
+            if (userChoice == 0)
+            {
+
+            }
+            else if (userChoice == 1)
             {
                 FileSys.FileSysOptions();
                 Console.WriteLine();
@@ -40,15 +45,15 @@ namespace SysCentral
                 SysInfo.SysInfoOptions();
                 Console.WriteLine();
             }
-            else
+            else 
             {
-                Console.WriteLine("Invalid option. Press any key to exit.");
                 Console.WriteLine();
+                Console.WriteLine("Invalid option. Please enter a valid int.");
+                Console.WriteLine();
+                Main(null);
             }
 
-            // Prompt the user to press enter to exit program
-            Console.Write("Press any key to exit program.");
-            Console.ReadKey();
+            
         }
     }
 }
