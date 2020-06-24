@@ -22,7 +22,8 @@ namespace SysCentral
 
         public static void Main(string[] args)
         {
-            try:        
+            try
+            {
                 UserOptions();    
                 Console.Write("Enter an int, based on the above options: ");
                 int userChoice = Convert.ToInt32(Console.ReadLine());
@@ -53,6 +54,7 @@ namespace SysCentral
                     Console.WriteLine();
                     Main(null);
                 }
+            }       
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
