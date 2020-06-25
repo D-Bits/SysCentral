@@ -20,4 +20,4 @@ Please see *bin* directory for executables.
 ## Additional Notes
 
 * OSX and Linux may have to run *chmod* on the executable files in order to run them.
-* For automating updates, program should be run elevated w/ root/admin privledges.
+* For automating updates, program should be run elevated w/ root/admin privileges.
