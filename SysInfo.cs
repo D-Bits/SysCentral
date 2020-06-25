@@ -86,6 +86,8 @@ namespace SysCentral
                 Console.WriteLine(value);
             }
 
+            Console.WriteLine();
+
             Console.Write("Select an option, based on the above options: ");
             int UserChoice = Convert.ToInt32(Console.ReadLine());
         
