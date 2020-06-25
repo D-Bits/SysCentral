@@ -442,7 +442,6 @@ Executables/linux64/SysCentral.dll
 Executables/linux64/SysCentral.runtimeconfig.json
 Executables/mac64/SysCentral.deps.json
 Executables/mac64/SysCentral.dll
-Executables/mac64/SysCentral.exe
 Executables/mac64/SysCentral.runtimeconfig.json
 Executables/win64/SysCentral.deps.json
 Executables/win64/SysCentral.dll
