@@ -37,8 +37,8 @@ namespace SysCentral
                 Console.WriteLine("***Hardware Information***");
                 Console.WriteLine();
                 // Get hardware architecture 
-                Console.WriteLine("Architecture: " + Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE"));
-                Console.WriteLine("CPU Identifier: " + Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER"));
+                Console.WriteLine("Architecture: " + Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE").ToString());
+                Console.WriteLine("CPU Identifier: " + Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER").ToString());
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace SysCentral
         public static void NetworkInfo()
         {
             string hostName = Dns.GetHostName();
-            IPHostEntry hostInfo = Dns.GetHostEntry("localhost");
+            IPHostEntry hostInfo = Dns.GetHostEntry(hostName);
 
             try
             {
@@ -57,7 +57,12 @@ namespace SysCentral
                 Console.WriteLine("***Network Information***");
                 Console.WriteLine();
                 Console.WriteLine("Host Name: " + Dns.GetHostName().ToString());
-                Console.WriteLine("IP Address: " +  Dns.GetHostEntry(hostName).AddressList);
+                Console.WriteLine("Host IP Address(es):");
+                foreach (var ip in hostInfo.AddressList)
+                {
+                    Console.WriteLine(ip.ToString());
+                }
+                //Console.WriteLine("IP Address: " +  Dns.GetHostEntry(hostName).AddressList);
             }
             catch (Exception ex)
             {
