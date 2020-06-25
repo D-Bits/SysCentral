@@ -30,7 +30,7 @@ namespace SysCentral
 
                 if (userChoice == 0)
                 {
-
+                    Environment.Exit(0);
                 }
                 else if (userChoice == 1)
                 {
