@@ -16,9 +16,9 @@ def dotnet_cmds():
     build_linux64 = run(['dotnet', 'build', '-r', 'linux-x64'], check=True)
 
     # Publish all
-    pub_win64 = run(['dotnet', 'publish', '-c', 'win10-x64'], check=True)
-    pub_mac64 = run(['dotnet', 'publish', '-c', 'osx-x64'], check=True)
-    pub_linux64 = run(['dotnet', 'publish', '-c', 'linux-x64'], check=True)
+    pub_win64 = run(['dotnet', 'publish', '-c', 'win10-x64', '-o', 'Executables/'], check=True)
+    pub_mac64 = run(['dotnet', 'publish', '-c', 'osx-x64', '-o', 'Executables/'], check=True)
+    pub_linux64 = run(['dotnet', 'publish', '-c', 'linux-x64', '-o', 'Executables/'], check=True)
 
     # Error outputs
     if restore.returncode != 0:
