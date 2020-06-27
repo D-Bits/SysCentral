@@ -7,17 +7,22 @@ namespace SysCentral
     {
         static void UserOptions()
         {
-            Dictionary<int, string> FileSysOptions = new Dictionary<int, string>();
+            Dictionary<int, string> MainMenuOptions = new Dictionary<int, string>();
 
-            FileSysOptions.Add(0, "Exit program.");
-            FileSysOptions.Add(1, "File/Directory Tasks.");
-            FileSysOptions.Add(2, "Automate Updates.");
-            FileSysOptions.Add(3, "Get Various System Information.");
+            MainMenuOptions.Add(0, "Exit program.");
+            MainMenuOptions.Add(1, "File/Directory Tasks.");
+            MainMenuOptions.Add(2, "Automate Updates.");
+            MainMenuOptions.Add(3, "Get Various System Information.");
+            MainMenuOptions.Add(4, "(*May need to be run w/ root*) Look up and Install Packages via Various Package Managers.");
 
-            foreach (var item in FileSysOptions)
+            Console.WriteLine();
+
+            foreach (var item in MainMenuOptions)
             {
                 Console.WriteLine(item);
             }
+
+            Console.WriteLine();
         }
 
         public static void Main(string[] args)
@@ -45,6 +50,11 @@ namespace SysCentral
                 else if (userChoice == 3)
                 {
                     SysInfo.SysInfoOptions();
+                    Console.WriteLine();
+                }
+                else if (userChoice == 4)
+                {
+                    Install.InstallChoices();
                     Console.WriteLine();
                 }
                 else 
