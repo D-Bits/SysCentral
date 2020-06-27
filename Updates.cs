@@ -17,7 +17,7 @@ namespace SysCentral
             try
             {
                 // Update all packages install via Chocolatey
-                Process ChocoUpdates = Process.Start("CMD.exe", "/K choco upgrade all");
+                Process ChocoUpdates = Process.Start("powershell.exe", "choco upgrade all");
             }
             catch (Exception ex)
             {
