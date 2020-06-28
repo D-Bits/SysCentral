@@ -22,6 +22,7 @@ namespace SysCentral
                 }
 
                 Console.WriteLine("Your directories have been created.");
+                Console.WriteLine();
             }
 
             catch (Exception ex)
@@ -91,6 +92,7 @@ namespace SysCentral
                 int userDirNum = Convert.ToInt32(Console.ReadLine());
 
                 CreateDirs(userPath, userDirNum);
+                FileSysOptions();
             }
             else if (userChoice == 2)
             {

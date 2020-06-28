@@ -64,7 +64,7 @@ namespace SysCentral
             else if (userChoice == 2)
             {
                 // Prompt the user to enter the name of a package
-                Console.Write("Enter the name of a package you want to look up via Chocolatey: ");
+                Console.Write("Enter the name of a package you want to install via Chocolatey: ");
                 string userPkg = Console.ReadLine();
                 ChocolateyInstall(userPkg);
                 Console.ReadKey();
