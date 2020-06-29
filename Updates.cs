@@ -47,9 +47,9 @@ namespace SysCentral
             try
             {
                 // Ensure downloadable packages are up-to-date
-                var AptUpdate = Process.Start("/bin/bash", "-c sudo apt-get update");
+                Process AptUpdate = Process.Start("/bin/bash", "-c sudo apt-get update");
                 // Update all installed packages
-                var AptUpgrade = Process.Start("/bin/bash", "-c sudo apt-get upgrade");
+                Process AptUpgrade = Process.Start("/bin/bash", "-c sudo apt-get upgrade");
             }
             catch (Exception ex)
             {

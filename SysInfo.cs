@@ -62,7 +62,6 @@ namespace SysCentral
                 {
                     Console.WriteLine(ip.ToString());
                 }
-                //Console.WriteLine("IP Address: " +  Dns.GetHostEntry(hostName).AddressList);
             }
             catch (Exception ex)
             {
