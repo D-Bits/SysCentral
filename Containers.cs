@@ -17,7 +17,7 @@ namespace SysCentral
         // Boot a named Postgres container, with a volume, and specified version
         public Process BootPostgres(string name, string volume, double version)
         {
-            Process createContainer = Process.Start("powershell.exe", $"docker run postgres:{version}-alpine --name {name}");
+            Process createContainer = Process.Start("powershell.exe", $"docker run postgres:{version}-alpine --name {name} -v {volume}:/var/lib/postgresql/data/");
 
             return createContainer;
         }
@@ -60,10 +60,11 @@ namespace SysCentral
 
             ContainerOptions.Add(0, "Back to Main Menu.");
             ContainerOptions.Add(1, "Boot a Container.");
-            ContainerOptions.Add(2, "Stop a Running Container.");
-            ContainerOptions.Add(3, "Restart a Running Container.");
-            ContainerOptions.Add(4, "Run docker system prune.");
-            ContainerOptions.Add(5, "Get Docker System Info");
+            ContainerOptions.Add(2, "Create a Postgres Container, with a Volume.");
+            ContainerOptions.Add(3, "Stop a Running Container.");
+            ContainerOptions.Add(4, "Restart a Running Container.");
+            ContainerOptions.Add(5, "Run docker system prune.");
+            ContainerOptions.Add(6, "Get Docker System Info");
 
             Console.WriteLine();
 
@@ -93,8 +94,26 @@ namespace SysCentral
                 Console.Write("Enter a name for your container: ");
                 string containerName = Console.ReadLine();
 
+                BootContainer(imageName, containerName);
+            }
+            else if (userChoice == 2)
+            {
+                // Get container name from stdin
+                Console.Write("Enter a name for your container: ");
+                string containerName = Console.ReadLine();
                 // Get a volume name from stdin
-                Console.Write("Enter a name for your volume (leave blank to not use a volume: ");
+                Console.Write("Enter a name for your volume: ");
+                string volumeName = Console.ReadLine();
+                // Get a version number from stdin
+                Console.Write("Enter which version of Postgres you want to use: ");
+                double versionNo = Convert.ToDouble(Console.ReadLine());
+
+                BootPostgres(containerName, volumeName, versionNo);
+            }
+            else
+            {
+                Console.WriteLine("*Invalid selection. Please choose again.");
+                ContainerChoices();
             }
         }
     }
