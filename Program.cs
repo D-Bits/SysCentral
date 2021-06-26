@@ -14,6 +14,7 @@ namespace SysCentral
             MainMenuOptions.Add(2, "Automate Updates.");
             MainMenuOptions.Add(3, "Get Various System Information.");
             MainMenuOptions.Add(4, "(*May need to be run w/ root*) Look up and Install Packages via Various Package Managers.");
+            MainMenuOptions.Add(5, "Manage Docker Containers.");
 
             Console.WriteLine();
 
@@ -56,6 +57,11 @@ namespace SysCentral
                 {
                     Install.InstallChoices();
                     Console.WriteLine();
+                }
+                else if (userChoice == 5)
+                {
+                     Containers.ContainerChoices();
+                     Console.WriteLine();
                 }
                 else 
                 {
